@@ -1,52 +1,52 @@
-# atRegGPTpl — ChatGPT Auto Account Creator
+# ChatGPT Auto Account Creator
 
-Tool tự động tạo tài khoản ChatGPT hàng loạt, hỗ trợ cả hai phiên bản **Node.js** và **Python**.
+A tool for automating bulk ChatGPT account creation, with two supported implementations: **Node.js** and **Python**.
 
 ---
 
-## 📁 Cấu trúc thư mục
+## 📁 Project Structure
 
 ```
 atRegGPTpl/
 ├── apps/
-│   ├── node/                       # Phiên bản Node.js (Puppeteer)
-│   │   ├── create_accounts.js      # Script tạo tài khoản chính
-│   │   ├── tool.js                 # Tiện ích hỗ trợ
-│   │   └── backup.js               # Backup dữ liệu
+│   ├── node/                       # Node.js version (Puppeteer)
+│   │   ├── create_accounts.js      # Main account creation script
+│   │   ├── tool.js                 # Helper utilities
+│   │   └── backup.js               # Data backup
 │   └── python/
-│       └── ToolCreatePlus/         # Phiên bản Python (Selenium)
-│           ├── create_accounts.py  # Script tạo tài khoản chính
+│       └── ToolCreatePlus/         # Python version (Selenium)
+│           ├── create_accounts.py  # Main account creation script
 │           ├── requirements.txt    # Python dependencies
-│           ├── README.md           # Hướng dẫn chi tiết Python version
-│           └── Extension/          # Chrome extension hỗ trợ
+│           ├── README.md           # Detailed guide for the Python version
+│           └── Extension/          # Supporting Chrome extension
 ├── config/
-│   ├── node.config.json            # Cấu hình cho Node.js version
-│   └── python.config.json          # Cấu hình cho Python version
+│   ├── node.config.json            # Config for the Node.js version
+│   └── python.config.json          # Config for the Python version
 ├── data/
 │   ├── input/
-│   │   ├── newEmail.txt            # Danh sách email để đăng ký
-│   │   ├── randomData.json         # Dữ liệu ngẫu nhiên (tên, sinh nhật...)
-│   │   └── Bin.csv                 # Dữ liệu thẻ thanh toán
+│   │   ├── newEmail.txt            # List of emails to register
+│   │   ├── randomData.json         # Random data (names, birthdays, etc.)
+│   │   └── Bin.csv                 # Payment card data
 │   └── output/
-│       ├── profiles/               # Chrome profiles (tự tạo khi chạy)
-│       ├── otp_results.txt         # Kết quả OTP
-│       ├── Bin.json                # Bin.csv đã convert sang JSON
+│       ├── profiles/               # Chrome profiles (auto-generated at runtime)
+│       ├── otp_results.txt         # OTP results
+│       ├── Bin.json                # Bin.csv converted to JSON
 │       └── python/
-│           ├── TaiKhoanThanhCong.txt   # Tài khoản tạo thành công
-│           └── DoingProfile.txt        # Profile đang xử lý
+│           ├── TaiKhoanThanhCong.txt   # Successfully created accounts
+│           └── DoingProfile.txt        # Profile currently being processed
 ├── scripts/
-│   ├── get_otp.py                  # Script lấy OTP từ mail
-│   └── convert.py                  # Convert Bin.csv → Bin.json
+│   ├── get_otp.py                  # Script for fetching OTP from mail
+│   └── convert.py                  # Converts Bin.csv → Bin.json
 └── package.json                    # Node.js dependencies
 ```
 
 ---
 
-## ⚙️ Yêu cầu
+## ⚙️ Requirements
 
 ### Node.js version
 - Node.js >= 16
-- Google Chrome đã cài đặt
+- Google Chrome installed
 
 ```bash
 npm install
@@ -54,7 +54,7 @@ npm install
 
 ### Python version
 - Python >= 3.8
-- Google Chrome đã cài đặt
+- Google Chrome installed
 
 ```bash
 cd apps/python/ToolCreatePlus
@@ -63,28 +63,28 @@ pip install -r requirements.txt
 
 ---
 
-## 🚀 Sử dụng
+## 🚀 Usage
 
-### 1. Chuẩn bị dữ liệu đầu vào
+### 1. Prepare input data
 
-- Thêm email vào `data/input/newEmail.txt` (mỗi email một dòng)
-- Kiểm tra `data/input/randomData.json` có đủ dữ liệu ngẫu nhiên
+- Add emails to `data/input/newEmail.txt` (one email per line)
+- Make sure `data/input/randomData.json` contains enough random data
 
-### 2. Cấu hình
+### 2. Configuration
 
-Chỉnh sửa file config tương ứng:
+Edit the corresponding config file:
 
-| Tham số | Mô tả |
+| Parameter | Description |
 |---|---|
-| `defaultPassword` | Mật khẩu mặc định cho tài khoản |
-| `chatUrl` | URL ChatGPT |
-| `mailReaderUrl` | URL đọc mail OTP |
-| `emailsFilePath` | Đường dẫn file danh sách email |
-| `otpAttempts` | Số lần thử lấy OTP |
-| `delayBetweenAccounts` | Thời gian chờ giữa các tài khoản (giây) |
-| `headless` | Chạy Chrome ẩn (true/false) |
+| `defaultPassword` | Default password for accounts |
+| `chatUrl` | ChatGPT URL |
+| `mailReaderUrl` | OTP mail reader URL |
+| `emailsFilePath` | Path to the email list file |
+| `otpAttempts` | Number of OTP retrieval attempts |
+| `delayBetweenAccounts` | Delay between accounts (seconds) |
+| `headless` | Run Chrome headless (true/false) |
 
-### 3. Chạy
+### 3. Run
 
 **Node.js version:**
 ```bash
@@ -98,35 +98,35 @@ python apps/python/ToolCreatePlus/create_accounts.py
 
 ---
 
-## ✨ Tính năng
+## ✨ Features
 
-| Tính năng | Node.js | Python |
+| Feature | Node.js | Python |
 |---|---|---|
-| Bypass Cloudflare | ⚠️ Puppeteer Stealth | ✅ undetected-chromedriver |
-| Tự động lấy OTP | ✅ | ✅ |
+| Cloudflare bypass | ⚠️ Puppeteer Stealth | ✅ undetected-chromedriver |
+| Automatic OTP retrieval | ✅ | ✅ |
 | Human-like behavior | ✅ | ✅ |
-| Dữ liệu profile ngẫu nhiên | ✅ | ✅ |
-| Chrome extension hỗ trợ | — | ✅ |
-| Dễ debug | ⚠️ | ✅ |
+| Random profile data | ✅ | ✅ |
+| Supporting Chrome extension | — | ✅ |
+| Easy to debug | ⚠️ | ✅ |
 
-> **Khuyến nghị:** Dùng Python version để bypass Cloudflare hiệu quả hơn.
+> **Recommendation:** Use the Python version for more reliable Cloudflare bypass.
 
 ---
 
 ## 📊 Output
 
-- Tài khoản thành công lưu tại `data/output/python/TaiKhoanThanhCong.txt`
-- Log quá trình hiển thị trực tiếp trên terminal
+- Successful accounts are saved to `data/output/python/TaiKhoanThanhCong.txt`
+- Progress logs are printed directly to the terminal
 
 ---
 
 ## 🔧 Troubleshooting
 
-**ChromeDriver lỗi:**
+**ChromeDriver errors:**
 ```bash
 pip install --upgrade undetected-chromedriver
 ```
 
-**Cloudflare vẫn chặn:** Chạy lại, tool sẽ tự động retry.
+**Still blocked by Cloudflare:** Re-run the tool, it will automatically retry.
 
-**Không tìm thấy element:** ChatGPT có thể đã thay đổi layout — kiểm tra log để xác định bước bị lỗi.
+**Element not found:** ChatGPT's layout may have changed — check the logs to identify which step failed.
