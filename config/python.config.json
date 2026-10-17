@@ -1,0 +1,14 @@
+{
+  "defaultPassword": "Chatgptteam@",
+  "chatUrl": "https://chatgpt.com",
+  "mailReaderUrl": "https://dongvanfb.net/read_mail_box/",
+  "emailsFilePath": "data/input/newEmail.txt",
+  "randomDataPath": "data/input/randomData.json",
+  "validSenders": [
+    "noreply@tm.openai.com",
+    "otp@tm1.openai.com",
+    ".openai.com"
+  ],
+  "otpAttempts": 4,
+  "delayBetweenAccounts": 5
+}

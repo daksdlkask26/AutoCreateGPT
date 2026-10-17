@@ -1,0 +1,19 @@
+{
+  "name": "atreggptpl",
+  "version": "1.0.0",
+  "description": "Automation toolkit for ChatGPT account creation (Node.js + Python)",
+  "main": "apps/node/tool.js",
+  "scripts": {
+    "create:node": "node apps/node/create_accounts.js",
+    "otp:node": "node apps/node/tool.js",
+    "otp:legacy": "node apps/node/backup.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^24.35.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}
